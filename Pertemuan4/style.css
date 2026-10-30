@@ -1,0 +1,473 @@
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: #12100e; /* Dark amber-black, cozy vibe */
+    color: #e5dfd5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & COMMON COMPONENTS
+   ========================================================================== */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+em {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #f59e0b; /* Warm acoustic orange/amber */
+}
+
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #d97706;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   3. NAVIGATION
+   ========================================================================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 8%;
+    background: rgba(18, 16, 14, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #f59e0b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #d1c9bd;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f59e0b;
+}
+
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
+header#top {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 50% 30%, #3d2208 0%, #12100e 70%);
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    overflow: hidden;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.moon {
+    font-size: 2.5rem;
+    color: #f59e0b;
+    margin-bottom: 1rem;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    color: #a89f91;
+    margin-bottom: 2.5rem;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #12100e;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.5);
+}
+
+/* Floating Symbols/Math/Icons Animation (+, x, =, ÷) */
+.floating-star {
+    position: absolute;
+    color: #fbbf24;
+    opacity: 0.5;
+    font-family: monospace;
+    animation: float 6s infinite ease-in-out;
+}
+
+.star-one { top: 15%; left: -5%; font-size: 2rem; animation-delay: 0s; }
+.star-two { top: 55%; right: -5%; font-size: 1.8rem; animation-delay: 2s; }
+.star-three { bottom: 15%; left: 5%; font-size: 2.2rem; animation-delay: 4s; }
+
+/* ==========================================================================
+   5. MAIN CONTENT & SECTIONS
+   ========================================================================== */
+main {
+    padding: 4rem 1.5rem;
+}
+
+/* About Section */
+.about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.about p {
+    color: #d1c9bd;
+    margin-bottom: 1.0rem;
+    font-size: 1.05rem;
+}
+
+.signature {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #f59e0b;
+    font-size: 0.95rem;
+}
+
+/* Eras / Albums Section */
+.eras-section {
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+    text-align: center;
+}
+
+.eras-section h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.eras-section .intro {
+    color: #a89f91;
+    margin-bottom: 3rem;
+}
+
+.era-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.era-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.era-card:hover {
+    transform: translateY(-8px);
+}
+
+.era-art {
+    margin-bottom: 1.5rem;
+}
+
+.era-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+}
+
+.era-art h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.era-art p {
+    font-size: 0.85rem;
+    color: #a89f91;
+}
+
+.mini-star {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.era-year {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+/* Specific Album Themes (Ed Sheeran: +, x, =, ÷) */
+.era-1989 { border-color: rgba(34, 197, 94, 0.3); } /* Plus (+) Green */
+.era-1989 .era-icon, .era-1989 .mini-star, .era-1989 .era-year { color: #22c55e; }
+.era-1989:hover { box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2); }
+
+.era-midnights { border-color: rgba(239, 68, 68, 0.3); } /* Multiply (x) Red */
+.era-midnights .era-icon, .era-midnights .mini-star, .era-midnights .era-year { color: #ef4444; }
+.era-midnights:hover { box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2); }
+
+.era-poets { border-color: rgba(59, 130, 246, 0.3); } /* Divide (÷) Blue */
+.era-poets .era-icon, .era-poets .mini-star, .era-poets .era-year { color: #3b82f6; }
+.era-poets:hover { box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
+
+.era-lover { border-color: rgba(249, 115, 22, 0.3); } /* Equals (=) Orange */
+.era-lover .era-icon, .era-lover .mini-star, .era-lover .era-year { color: #f97316; }
+.era-lover:hover { box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2); }
+
+/* Songs Section */
+.songs-section h2 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.song {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    margin-bottom: 0.75rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.song:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
+}
+
+.song-number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #a89f91;
+    width: 40px;
+}
+
+.song-info {
+    flex-grow: 1;
+}
+
+.song-info h3 {
+    font-size: 1.05rem;
+    color: #ffffff;
+}
+
+.song-info p {
+    font-size: 0.8rem;
+    color: #a89f91;
+}
+
+.song-note {
+    color: #f59e0b;
+    opacity: 0.7;
+}
+
+/* Quote Section */
+.quote-section {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto 5rem;
+}
+
+.quote-star {
+    font-size: 1.5rem;
+    color: #f59e0b;
+    margin-bottom: 1.0rem;
+    display: block;
+}
+
+.quote-section h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+.quote-section p {
+    color: #a89f91;
+}
+
+/* Ending Section */
+.ending {
+    text-align: center;
+}
+
+.ending h2 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.ending p {
+    color: #d1c9bd;
+}
+
+/* ==========================================================================
+   6. FOOTER & SCROLL TOP BUTTON
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid rgba(245, 158, 11, 0.1);
+    background: #0a0907;
+}
+
+footer p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #d1c9bd;
+    margin-bottom: 0.25rem;
+}
+
+footer small {
+    font-size: 0.75rem;
+    color: #a89f91;
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    backdrop-filter: blur(8px);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+#scrollTopBtn:hover {
+    background: #f59e0b;
+    color: #12100e;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+   7. KEYFRAMES & RESPONSIVE DESIGN
+   ========================================================================== */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.95); }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 1rem 5%;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .section-card {
+        padding: 2rem 1.25rem;
+    }
+
+    #scrollTopBtn {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 42px;
+        height: 42px;
+    }
+}
