@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crocs Official Store - Latihan 5</title>
-    <!-- Bootstrap CSS -->
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
+   
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+   
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top mb-4">
         <div class="container">
             <a class="navbar-brand" href="#">crocs 🐊</a>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <!-- Bar Pencarian -->
+       
         <div class="row mb-4">
             <div class="col-md-6 mx-auto">
                 <div class="input-group shadow-sm rounded-pill overflow-hidden">
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <!-- Panel Keranjang Belanja (Efek fadeToggle) -->
+       
         <div id="cartPanel" class="card shadow-lg mb-4 cart-panel">
             <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
                 <h5 class="mb-0 fw-bold">🛒 Keranjang Belanja Crocs</h5>
@@ -62,22 +62,22 @@
             </div>
         </div>
 
-        <!-- Ringkasan Pesanan Hasil Checkout -->
+       
         <div id="orderSummary" class="mt-4"></div>
 
-        <!-- Daftar Produk -->
+      
         <h3 class="fw-bold mb-4">Katalog Lengkap Produk Crocs</h3>
         <div id="productContainer" class="row g-4">
             <!-- Rendered via JS -->
         </div>
     </div>
 
-    <!-- jQuery & Bootstrap JS -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // 1. Array of Object (9 produk Crocs lengkap dengan id, nama, harga, stok, gambar)
+        
         const products = [
             { id: 1, nama: "Crocs Classic Clog - Black", harga: 999000, stok: 8, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80" },
             { id: 2, nama: "Crocs Echo Clog - Stucco", harga: 1599000, stok: 5, img: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?auto=format&fit=crop&w=500&q=80" },
@@ -92,16 +92,16 @@
 
         let cart = [];
 
-        // 6. Gunakan $(document).ready()
+       
         $(document).ready(function() {
             renderProducts();
 
-            // 3. Efek jQuery (fadeToggle) untuk membuka/menutup keranjang
+            
             $("#toggleCartBtn").click(function() {
                 $("#cartPanel").fadeToggle("fast");
             });
 
-            // 5. Fitur pencarian produk dengan val() dan toggle()
+           
             $("#searchInput").on("keyup", function() {
                 let keyword = $(this).val().toLowerCase();
                 
@@ -111,14 +111,14 @@
                 });
             });
 
-            // 2. jQuery empty() untuk Kosongkan Keranjang
+           
             $("#clearCartBtn").click(function() {
                 if (cart.length === 0) {
                     alert("Keranjang belanja sudah kosong!");
                     return;
                 }
 
-                // 4. Pop-up confirm()
+             
                 if (confirm("Apakah Anda yakin ingin mengosongkan keranjang belanja?")) {
                     cart.forEach(cartItem => {
                         let product = products.find(p => p.id === cartItem.id);
@@ -134,7 +134,6 @@
                 }
             });
 
-            // 4. Pop-up prompt() untuk checkout & ringkasan pesanan
             $("#checkoutBtn").click(function() {
                 if (cart.length === 0) {
                     alert("Keranjang Anda masih kosong. Silakan pilih produk terlebih dahulu!");
@@ -182,7 +181,7 @@
             });
         });
 
-        // 1. Render produk menggunakan perulangan, createElement, createTextNode, dan appendChild
+     
         function renderProducts() {
             const container = document.getElementById("productContainer");
             container.innerHTML = "";
@@ -236,11 +235,11 @@
             });
         }
 
-        // Tambah ke keranjang
+        
         function addToCart(productId) {
             let product = products.find(p => p.id === productId);
 
-            // 4. Pop-up alert() jika stok habis
+            
             if (product.stok <= 0) {
                 alert("Maaf! Stok untuk produk " + product.nama + " sudah habis.");
                 return;
@@ -259,7 +258,7 @@
             updateCartUI();
         }
 
-        // 2 & 3. jQuery append(), remove(), text(), fadeIn(), fadeOut()
+  
         function updateCartUI() {
             let cartList = $("#cartList");
             cartList.empty();
@@ -278,7 +277,7 @@
                         </li>
                     `);
                     
-                    // 3. Efek fadeIn() saat produk masuk ke keranjang
+                   
                     li.hide().appendTo(cartList).fadeIn(300);
                 });
             }
@@ -291,9 +290,9 @@
             updateCartDisplay();
         }
 
-        // Hapus item dari keranjang dengan pop-up confirm & fadeOut
+        
         function removeItemFromCart(productId, liElement) {
-            // 4. Pop-up confirm() sebelum hapus
+         
             if (confirm("Apakah Anda yakin ingin menghapus item ini dari keranjang?")) {
                 let index = cart.findIndex(item => item.id === productId);
                 if (index !== -1) {
@@ -306,7 +305,7 @@
                     cart.splice(index, 1);
                 }
 
-                // 2 & 3. jQuery fadeOut() & remove()
+        
                 liElement.fadeOut(300, function() {
                     $(this).remove();
                     if (cart.length === 0) {
@@ -317,7 +316,6 @@
             }
         }
 
-        // 2. jQuery text() untuk memperbarui total
         function updateCartDisplay() {
             let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             let totalPrice = cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
